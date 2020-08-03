@@ -33,20 +33,20 @@ class ResultActivity : AppCompatActivity() {
 
 
         // コンピュータの手を決める
-        val comHand = (Math.random() * 3 ).toInt()
+        val comHand = (Math.random() *3 ).toInt()
         when(comHand) {
-            gu -> comHandImage.setResource(R.drawable.com_gu)
-            choki -> comHandImage.setResource(R.drawable.com_choki)
-            pa -> comHandImage.setResource(R.drawable.com_pa)
+            gu -> comHandImage.setImageResource(R.drawable.com_gu)
+            choki -> comHandImage.setImageResource(R.drawable.com_choki)
+            pa -> comHandImage.setImageResource(R.drawable.com_pa)
         }
 
         // 勝敗を判定する
-        val gameResult = (comHand - myHand +  3) % 3
-        when(gameResult) {
+        val gameResuIt = (comHand - myHand +  3) % 3
+        when(gameResuIt) {
             0 -> resultLabel.setText(R.string.result_draw)  // 引き分け
             1 -> resultLabel.setText(R.string.result_win)   // 勝った場合
             2 -> resultLabel.setText(R.string.result_lose)  // 負けた場合
         }
-        backButton.setOnClickListener { finish()}
+        backButton.setOnClickListener  {  finish() }
     }
 }
