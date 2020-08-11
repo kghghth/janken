@@ -35,10 +35,10 @@ class ResultActivity : AppCompatActivity() {
                 } else if (gameResult == 1) {
                     // 前回の勝負が1回目で、コンピュータが負けた場合
                     // 相手の出した手に勝つ手を出す
-                    hand = (lastMyHand - 1 + 3) % 3
+                    hand = (lastMyHamd - 1 + 3) % 3
                 }
-            } else if (winningStreakCount > 0) {
-                if (beforeLastComHand == lastComHand) {
+            } else if (winnigStreakCount > 0) {
+                if (beforelastComHand == lastComHand) {
                     //同じ手で連勝した場合は手を変える
                     while (lastComHand == hand) {
                         hand = (Math.random() * 3).toInt()
@@ -104,10 +104,9 @@ class ResultActivity : AppCompatActivity() {
         val id = intent.getIntExtra("MY_HAND",0)
 
         val myHand: Int
-        myHand = when(id) {
-            R.id.gu -> {
-                myHandImage.setImageResource(R.drawable.gu)
-                gu
+        myHand =
+            when(id) {
+            R.id.gu -> { myHandImage.setImageResource(R.drawable.gu)
             }
             R.id.choki -> {
                 myHandImage.setImageResource(R.drawable.choki)
@@ -122,7 +121,7 @@ class ResultActivity : AppCompatActivity() {
 
 
         // コンピュータの手を決める
-        val comHand = (Math.random() *3 ).toInt()
+        val comHand = getHand()
         when(comHand) {
             gu -> comHandImage.setImageResource(R.drawable.com_gu)
             choki -> comHandImage.setImageResource(R.drawable.com_choki)
@@ -138,4 +137,6 @@ class ResultActivity : AppCompatActivity() {
         }
         backButton.setOnClickListener  {  finish() }
     }
+        //じゃんけんの結果を保存する
+        saveDate(myHand, comHand, gameResult)
 }

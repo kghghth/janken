@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gu.setOnClickListener { onJankenButtonTapped(it)}
-        choki.setOnClickListener { onJankenButtonTapped(it)}
-        pa.setOnClickListener { onJankenButtonTapped(it)}
+        gu.setOnClickListener { onJankenButtonTapped(it) }
+        choki.setOnClickListener { onJankenButtonTapped(it) }
+        pa.setOnClickListener { onJankenButtonTapped(it) }
 
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit  {
@@ -24,13 +24,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
-
     fun onJankenButtonTapped(view: View?) {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("MY_HAND", view?.id)
         startActivity(intent)
 
     }
-}
