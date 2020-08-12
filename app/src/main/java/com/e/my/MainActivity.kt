@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.text.method.TextKeyListener.clear
 import android.view.View
+import androidx.core.content.edit
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.prefs.Preferences
 
@@ -19,15 +21,15 @@ class MainActivity : AppCompatActivity() {
         pa.setOnClickListener { onJankenButtonTapped(it) }
 
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        pref.edit  {
-            clear()
-        }
+        pref.edit().clear()
 
 
     }
+
     fun onJankenButtonTapped(view: View?) {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("MY_HAND", view?.id)
         startActivity(intent)
 
     }
+}
