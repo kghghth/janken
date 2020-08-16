@@ -75,7 +75,6 @@ class ResultActivity : AppCompatActivity() {
                     }
                     else -> gu
                 }
-
             // コンピュータの手を決める
             val comHand = (Math.random() * 3).toInt()
             when (comHand) {
@@ -83,7 +82,6 @@ class ResultActivity : AppCompatActivity() {
                 choki -> comHandImage.setImageResource(R.drawable.com_choki)
                 pa -> comHandImage.setImageResource(R.drawable.com_pa)
             }
-
             // 勝敗を判定する
             val gameResuIt = (comHand - myHand + 3) % 3
             when (gameResuIt) {
@@ -93,8 +91,9 @@ class ResultActivity : AppCompatActivity() {
             }
             backButton.setOnClickListener { finish() }
             //じゃんけんの結果を保存する
-            saveDate(myHand, comHand, gameResuIt)
-  }
+            saveData(myHand, comHand, gameResuIt)
+   }
+
         private fun saveDate(myHand: Int, comHand: Int, gameResult: Int) {
             val pref = PreferenceManager.getDefaultSharedPreferences(this)
             val gameCount = pref.getInt("GAME_COUNT", 0)
@@ -121,7 +120,7 @@ class ResultActivity : AppCompatActivity() {
 
         }
 
-            fun saveDate(myHand: Int, comHand: Int, gameResult: Int) {
+            fun saveData(myHand: Int, comHand: Int, gameResult: Int) {
 //                val pref = PreferenceManager.getDefaultSharedPreferences(this)
 //                val gameCount = pref.getInt("GAME_COUNT", 0)
 //                val winningStreakCount = pref.getInt("WINNING_STREAk_COUNT", 0)
